@@ -6,3 +6,6 @@ tags:
 category:
   - SQL学习
 ---
+
+## INNER JOIN 内连接
+
