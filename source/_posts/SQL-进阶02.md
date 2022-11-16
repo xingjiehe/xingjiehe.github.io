@@ -7,5 +7,9 @@ category:
   - SQL学习
 ---
 
+# JOIN
+
+![sql-join](./SQL-进阶02/sql-join.png) 
+
 ## INNER JOIN 内连接
 
