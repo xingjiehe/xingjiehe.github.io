@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Top语句用于返回指定数量的数据量，对于数据量很大的表中查询配合Top语句更有效率。TOP用法 ⚠️不是所有的数据库系统都支持Top语句。例：MySQL ，用于MySQL可以用LIMIT来限定 1234-- 返回确定数目的记录个数SELECT TOP 个数 &lt;列名表&gt; FROM 表名 [查询条件]-- 返回结果集中指定百分比的记录数SELECT TOP 百分数 PERCENT &lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL-基础02">
+<meta property="og:url" content="http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/index.html">
+<meta property="og:site_name" content="hxj的专属博客">
+<meta property="og:description" content="Top语句用于返回指定数量的数据量，对于数据量很大的表中查询配合Top语句更有效率。TOP用法 ⚠️不是所有的数据库系统都支持Top语句。例：MySQL ，用于MySQL可以用LIMIT来限定 1234-- 返回确定数目的记录个数SELECT TOP 个数 &lt;列名表&gt; FROM 表名 [查询条件]-- 返回结果集中指定百分比的记录数SELECT TOP 百分数 PERCENT &lt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/.com//%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="og:image" content="http://yoursite.com/.com//%E9%9D%9E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+<meta property="article:published_time" content="2022-11-09T08:09:30.000Z">
+<meta property="article:modified_time" content="2022-11-21T06:59:43.495Z">
+<meta property="article:author" content="Xingjie He">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/.com//%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.png">
+
+
+<link rel="canonical" href="http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/","path":"2022/11/09/SQL-基础02/","title":"SQL-基础02"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL-基础02 | hxj的专属博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="hxj的专属博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hxj的专属博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Top%E8%AF%AD%E5%8F%A5"><span class="nav-number">1.</span> <span class="nav-text">Top语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIKE%E8%AF%AD%E5%8F%A5"><span class="nav-number">2.</span> <span class="nav-text">LIKE语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-number">2.1.</span> <span class="nav-text">通配符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IN%E8%AF%AD%E5%8F%A5"><span class="nav-number">3.</span> <span class="nav-text">IN语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BETWEEN%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">4.</span> <span class="nav-text">BETWEEN操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ALIAS-%E5%88%AB%E5%90%8D"><span class="nav-number">5.</span> <span class="nav-text">ALIAS 别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.1.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.2.</span> <span class="nav-text">比较运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%9E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.3.</span> <span class="nav-text">非符号运算符</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Xingjie He"
+      src="/images/jianjian.png">
+  <p class="site-author-name" itemprop="name">Xingjie He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:xingjie1@ualberta.ca" title="E-Mail → mailto:xingjie1@ualberta.ca" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/jianjian.png">
+      <meta itemprop="name" content="Xingjie He">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hxj的专属博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL-基础02 | hxj的专属博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL-基础02
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-09 16:09:30" itemprop="dateCreated datePublished" datetime="2022-11-09T16:09:30+08:00">2022-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-21 14:59:43" itemprop="dateModified" datetime="2022-11-21T14:59:43+08:00">2022-11-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SQL%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">SQL学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>518</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Top语句"><a href="#Top语句" class="headerlink" title="Top语句"></a>Top语句</h3><p>用于返回指定数量的数据量，对于数据量很大的表中查询配合Top语句更有效率。<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LEPENGYANG/p/14050317.html">TOP用法</a></p>
+<p>⚠️不是所有的数据库系统都支持Top语句。例：MySQL ，用于MySQL可以用LIMIT来限定</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 返回确定数目的记录个数</span></span><br><span class="line"><span class="keyword">SELECT</span> TOP 个数 <span class="operator">&lt;</span>列名表<span class="operator">&gt;</span> <span class="keyword">FROM</span> 表名 [查询条件]</span><br><span class="line"><span class="comment">-- 返回结果集中指定百分比的记录数</span></span><br><span class="line"><span class="keyword">SELECT</span> TOP 百分数 <span class="keyword">PERCENT</span> <span class="operator">&lt;</span>列名表<span class="operator">&gt;</span> <span class="keyword">FROM</span> <span class="operator">&lt;</span>表名<span class="operator">&gt;</span> [查询条件]</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="LIKE语句"><a href="#LIKE语句" class="headerlink" title="LIKE语句"></a>LIKE语句</h3><p><strong>LIKE</strong> 子句用于在 WHERE 语句中进行模糊匹配</p>
+<h4 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a><strong>通配符</strong></h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- % 匹配零个、一个或者多个任意的字符</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 字段名 <span class="keyword">LIKE</span> &quot;%a&quot;；</span><br><span class="line"><span class="comment">-- _ 匹配单个字符或者数字</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 字段名 <span class="keyword">LIKE</span> &quot;_a&quot;；</span><br></pre></td></tr></table></figure>
+
+<h3 id="IN语句"><a href="#IN语句" class="headerlink" title="IN语句"></a>IN语句</h3><p>可以在 where 子句中查询多个规定的值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> 字段 <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 字段 <span class="keyword">in</span> (值<span class="number">1</span>,值<span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="BETWEEN操作符"><a href="#BETWEEN操作符" class="headerlink" title="BETWEEN操作符"></a>BETWEEN操作符</h3><p>在where 子句中，作用是选取介于两个值之间的数据范围</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 <span class="keyword">WHERE</span> 字段名 <span class="keyword">BETWEEN</span> 值<span class="number">1</span> <span class="keyword">AND</span> 值<span class="number">2</span>；</span><br></pre></td></tr></table></figure>
+
+<h3 id="ALIAS-别名"><a href="#ALIAS-别名" class="headerlink" title="ALIAS 别名"></a>ALIAS 别名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 <span class="keyword">AS</span> 表别名；</span><br><span class="line"><span class="comment">-- 或</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> 表名 表别名；</span><br></pre></td></tr></table></figure>
+
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44111805/article/details/124403278">运算符具体例子</a></p>
+<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><p>对数值或表达式进行加（+）、减（-）、乘（*）、除（&#x2F;）和取余（%）运算<img src="/.com//%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="算术运算符"></p>
+<p>⚠️在MySQL中+只表示数值相加。如果遇到非数值类型，先尝试转成数值，如果转失败，就按0计算。且 null值参与运算，结果为null</p>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>比较运算符用来对表达式左边的操作数和右边的操作数进行比较，比较的结果为真则返回1，比较的结果为假则返回0，其他情况则返回NULL。比较运算符经常被用来作为SELECT查询语句的条件来使用，返回符合条件的结果记录。<img src="/.com//%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="比较运算符"></p>
+<h4 id="非符号运算符"><a href="#非符号运算符" class="headerlink" title="非符号运算符"></a>非符号运算符</h4><p><img src="/.com//%E9%9D%9E%E7%AC%A6%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6.png" alt="非符号运算符"></p>
+<p>⚠️非空运算符（IS NOT NULL）判断一个值是否不为NULL，如果不为NULL则返回1，否则返回0</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>行行好 大家行行好</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Xingjie He 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/04/SQL-%E5%9F%BA%E7%A1%8001/" rel="prev" title="SQL-基础01">
+                  <i class="fa fa-chevron-left"></i> SQL-基础01
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/10/SQL-%E8%BF%9B%E9%98%B601/" rel="next" title="SQL-进阶01">
+                  SQL-进阶01 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xingjie He</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

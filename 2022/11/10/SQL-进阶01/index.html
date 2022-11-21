@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"yoursite.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="SELECT语句实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL-进阶01">
+<meta property="og:url" content="http://yoursite.com/2022/11/10/SQL-%E8%BF%9B%E9%98%B601/index.html">
+<meta property="og:site_name" content="hxj的专属博客">
+<meta property="og:description" content="SELECT语句实例">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-10T03:31:48.000Z">
+<meta property="article:modified_time" content="2022-11-21T06:59:43.503Z">
+<meta property="article:author" content="Xingjie He">
+<meta property="article:tag" content="数据库">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://yoursite.com/2022/11/10/SQL-%E8%BF%9B%E9%98%B601/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://yoursite.com/2022/11/10/SQL-%E8%BF%9B%E9%98%B601/","path":"2022/11/10/SQL-进阶01/","title":"SQL-进阶01"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SQL-进阶01 | hxj的专属博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="hxj的专属博客" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">hxj的专属博客</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SELECT%E8%AF%AD%E5%8F%A5%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.</span> <span class="nav-text">SELECT语句实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHERE%E8%AF%AD%E5%8F%A5%E5%AE%9E%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">WHERE语句实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AND-OR-NOT%E8%BF%90%E7%AE%97%E5%AE%9E%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">AND, OR, NOT运算实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IN%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">IN运算符实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BETWEEN%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.</span> <span class="nav-text">BETWEEN运算符实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LIKE%E8%BF%90%E7%AE%97%E7%AC%A6%E5%AE%9E%E4%BE%8B"><span class="nav-number">6.</span> <span class="nav-text">LIKE运算符实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REGEXP%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">7.</span> <span class="nav-text">REGEXP运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IS-NULL%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">8.</span> <span class="nav-text">IS NULL运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORDER-BY%E8%AF%AD%E5%8F%A5"><span class="nav-number">9.</span> <span class="nav-text">ORDER BY语句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LIMIT%E5%AD%90%E5%8F%A5"><span class="nav-number">10.</span> <span class="nav-text">LIMIT子句</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TO-SUM-UP"><span class="nav-number">11.</span> <span class="nav-text">TO SUM UP</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Xingjie He"
+      src="/images/jianjian.png">
+  <p class="site-author-name" itemprop="name">Xingjie He</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="mailto:xingjie1@ualberta.ca" title="E-Mail → mailto:xingjie1@ualberta.ca" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/10/SQL-%E8%BF%9B%E9%98%B601/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/jianjian.png">
+      <meta itemprop="name" content="Xingjie He">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="hxj的专属博客">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SQL-进阶01 | hxj的专属博客">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SQL-进阶01
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-11-10 11:31:48" itemprop="dateCreated datePublished" datetime="2022-11-10T11:31:48+08:00">2022-11-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-11-21 14:59:43" itemprop="dateModified" datetime="2022-11-21T14:59:43+08:00">2022-11-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/SQL%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">SQL学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="SELECT语句实例"><a href="#SELECT语句实例" class="headerlink" title="SELECT语句实例"></a>SELECT语句实例</h2><span id="more"></span>
+
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UE41147KC/?p=8&spm_id_from=pageDriver&vd_source=e70da3479cf8b9e3771c773a404a3780">b站视频</a></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	<span class="keyword">DISTINCT</span> last_name, </span><br><span class="line">	first_name, </span><br><span class="line">	points,</span><br><span class="line">	<span class="comment">-- 运算符逻辑与数学一致</span></span><br><span class="line">	(points <span class="operator">+</span> <span class="number">70</span>) <span class="operator">%</span> <span class="number">100</span> <span class="keyword">AS</span> discount_fact 或者 <span class="string">&#x27;discount factor&#x27;</span></span><br><span class="line"><span class="keyword">FROM</span> customers</span><br></pre></td></tr></table></figure>
+
+<!-- more -->
+
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>Return all the products. 展示name, unit price 和 new price (unit price*1.1)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	name, </span><br><span class="line">	unit_price, </span><br><span class="line">  unit_price <span class="operator">*</span> <span class="number">1.1</span> <span class="keyword">AS</span> <span class="string">&#x27;new price&#x27;</span> </span><br><span class="line">  <span class="comment">-- 或者 unit_price * 1.1 AS &#x27;new price&#x27;</span></span><br><span class="line"><span class="keyword">FROM</span> products;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="WHERE语句实例"><a href="#WHERE语句实例" class="headerlink" title="WHERE语句实例"></a>WHERE语句实例</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> state <span class="operator">&lt;&gt;</span> <span class="string">&#x27;va&#x27;</span>或者<span class="string">&#x27;VA&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>也可对日期或文本进行比较运算，注意SQL里日期的标准写法及其需要用引号包裹这一点</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> birth_date <span class="operator">&gt;</span> <span class="string">&#x27;2022-01-01&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>练习</strong></li>
+</ul>
+<p>Get the orders placed this year(2019)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> order_date <span class="operator">&gt;=</span> <span class="string">&#x27;2019-01-01&#x27;</span>;	</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="AND-OR-NOT运算实例"><a href="#AND-OR-NOT运算实例" class="headerlink" title="AND, OR, NOT运算实例"></a>AND, OR, NOT运算实例</h2><ul>
+<li><p><strong>小结</strong></p>
+<p>用逻辑运算符AND、OR、NOT对（数学和）比较运算进行组合实现多重条件筛选<br>执行优先级：数学→比较→逻辑</p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers </span><br><span class="line"><span class="keyword">WHERE</span> birth_date <span class="operator">&gt;</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">AND</span> points <span class="operator">&gt;</span> <span class="number">1000</span></span><br><span class="line"><span class="operator">/</span> <span class="keyword">WHERE</span> birth_date <span class="operator">&gt;</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">OR</span> </span><br><span class="line">      points <span class="operator">&gt;</span> <span class="number">1000</span> <span class="keyword">AND</span> state <span class="operator">=</span> <span class="string">&#x27;VA&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><strong>AND优先级高于OR，但最好加括号，更清晰</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> birth_date <span class="operator">&gt;</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">OR</span> </span><br><span class="line">      (points <span class="operator">&gt;</span> <span class="number">1000</span> <span class="keyword">AND</span> state <span class="operator">=</span> <span class="string">&#x27;VA&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><strong>NOT的用法</strong></li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers </span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span> (birth_date <span class="operator">&gt;</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">OR</span> points <span class="operator">&gt;</span> <span class="number">1000</span>)</span><br><span class="line"><span class="comment">-- 去掉NOT 相当于</span></span><br><span class="line"><span class="keyword">WHERE</span> birth_date <span class="operator">&lt;=</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">AND</span> points <span class="operator">&lt;=</span> <span class="number">1000</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>练习</li>
+</ul>
+<p>订单6中总价大于30的商品</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> order_items <span class="keyword">where</span> order_id <span class="operator">=</span> <span class="number">6</span> </span><br><span class="line"><span class="keyword">AND</span> quantity <span class="operator">*</span> unit_price <span class="operator">&gt;</span> <span class="number">30</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="IN运算符实例"><a href="#IN运算符实例" class="headerlink" title="IN运算符实例"></a>IN运算符实例</h2><p>可加NOT，进行取反</p>
+<p><strong>练习</strong></p>
+<p>Return products with quantity in stock equal to 49, 38, 72</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products <span class="keyword">where</span> quantity_in_stock <span class="keyword">in</span> (<span class="number">49</span>,<span class="number">38</span>,<span class="number">72</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="BETWEEN运算符实例"><a href="#BETWEEN运算符实例" class="headerlink" title="BETWEEN运算符实例"></a>BETWEEN运算符实例</h2><p>⚠️注意事项：</p>
+<ol>
+<li><p>用AND而非括号</p>
+</li>
+<li><p><strong>闭区间，包含两端点</strong></p>
+</li>
+<li><p>注意两端都是包含的 不能写作BETWEEN (1000, 3000)！别和IN的写法搞混</p>
+</li>
+</ol>
+<p><strong>练习</strong></p>
+<p>Return customers born between 1&#x2F;1&#x2F;1990 and 1&#x2F;1&#x2F;2000</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> birth_date <span class="keyword">BETWEEN</span> <span class="string">&#x27;1990-01-01&#x27;</span> <span class="keyword">AND</span> <span class="string">&#x27;2000-01-01&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="LIKE运算符实例"><a href="#LIKE运算符实例" class="headerlink" title="LIKE运算符实例"></a>LIKE运算符实例</h2><p><strong>小结</strong></p>
+<p>模糊查找，查找具有某种模式的字符串的记录&#x2F;行</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;brush%&#x27;</span> <span class="operator">/</span> <span class="string">&#x27;b____y&#x27;</span><span class="operator">/</span><span class="string">&#x27;%b%&#x27;</span></span><br><span class="line"><span class="comment">-- &#x27;b____y&#x27;这个表示匹配第一个字符是b然后紧跟4个字符，最后一个为y</span></span><br></pre></td></tr></table></figure>
+
+<p>两种通配符：</p>
+<ul>
+<li><code>%</code> 任何个数（包括0个）的字符</li>
+<li><code>_</code> 单个字符</li>
+</ul>
+<p><strong>练习</strong></p>
+<p>Get the customers whose addresses contain TRAIL or AVENUE, phone numbers end with 9</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> address <span class="keyword">LIKE</span> <span class="string">&#x27;%TRAIL%&#x27;</span> <span class="keyword">or</span> address <span class="keyword">LIKE</span> <span class="string">&#x27;%AVENUE%&#x27;</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> phone <span class="keyword">LIKE</span> <span class="string">&#x27;%9&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="REGEXP运算符"><a href="#REGEXP运算符" class="headerlink" title="REGEXP运算符"></a>REGEXP运算符</h2><p><strong>小结</strong></p>
+<p>正则表达式，在搜索字符串方面更为强大，可搜索更复杂的模板</p>
+<p><strong>例子</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;%field%&#x27;</span></span><br><span class="line">等效于：</span><br><span class="line"><span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;field&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>正则表达式可以组合来表达更复杂的字符串模式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;^mac|field$|rose&#x27;</span> <span class="comment">-- 查找mac开头或field结尾或包含rose的结果</span></span><br><span class="line"><span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;[gi]e|e[fmq]&#x27;</span> <span class="comment">-- 查找含ge/ie或ef/em/eq的</span></span><br><span class="line"><span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;[a-h]e|e[c-j]&#x27;</span><span class="comment">-- 查找e之前a到h任意字母的结果</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>^</td>
+<td>开头</td>
+</tr>
+<tr>
+<td>$</td>
+<td>结尾</td>
+</tr>
+<tr>
+<td>[abc]</td>
+<td>含abc</td>
+</tr>
+<tr>
+<td>[a-c]</td>
+<td>含a到c</td>
+</tr>
+<tr>
+<td>|</td>
+<td>logical or或者</td>
+</tr>
+</tbody></table>
+<p><strong>练习</strong></p>
+<p>Get the customers whose 1.first names are ELKA or AMBUR 2.last name end with EY or ON</p>
+<p>3.last names start with MY or contains CE 4.last name contain B followed by R or U</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> first_name REGEXP <span class="string">&#x27;ELKA|AMBUR&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;EY$|ON$&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;^MY|SE&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> last_name REGEXP <span class="string">&#x27;b[RU]&#x27;</span>或者<span class="string">&#x27;br|bu&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="IS-NULL运算符"><a href="#IS-NULL运算符" class="headerlink" title="IS NULL运算符"></a>IS NULL运算符</h2><p><strong>小结</strong></p>
+<p>找出空值，找出有某些属性缺失的记录</p>
+<p><strong>例子</strong></p>
+<p>找出phone缺失的数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">WHERE</span> phone <span class="keyword">IS</span> <span class="keyword">NULL</span> <span class="operator">/</span> <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>练习</strong></p>
+<p>Get the orders that are not shipped</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> orders <span class="keyword">WHERE</span> shipper_id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="ORDER-BY语句"><a href="#ORDER-BY语句" class="headerlink" title="ORDER BY语句"></a>ORDER BY语句</h2><p><strong>小结</strong></p>
+<ol>
+<li>可多列</li>
+<li><strong>可以是列间的数学表达式</strong></li>
+<li><strong>可包括任何列，包括没选择的列（MySQL特性，其它DBMS可能报错），</strong></li>
+<li><strong>可以是之前定义好的别名列（MySQL特性，甚至可以是用一个常数设置的列别名）</strong></li>
+<li>任何一个排序依据列后面都可选加 DESC</li>
+</ol>
+<p><strong>例子</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, unit_price <span class="operator">*</span> <span class="number">1.1</span> <span class="operator">+</span> <span class="number">10</span> <span class="keyword">as</span> new_price </span><br><span class="line"><span class="keyword">from</span> products</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> new_price <span class="keyword">desc</span>, product_id</span><br><span class="line"><span class="comment">-- 这两个分别是 别名列 和 未选择列，都用到了 MySQL 特性</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>练习</strong></p>
+<p>订单2的商品按总价降序排列</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> order_items <span class="keyword">WHERE</span> order_id <span class="operator">=</span> <span class="string">&#x27;2&#x27;</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> quantity <span class="operator">*</span> unit_price <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">-- 或者先定义别名</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span>, quantity <span class="operator">*</span> unit_price <span class="keyword">AS</span> price</span><br><span class="line"><span class="keyword">FROM</span> order_items <span class="keyword">WHERE</span> order_id <span class="operator">=</span> <span class="string">&#x27;2&#x27;</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> price <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="LIMIT子句"><a href="#LIMIT子句" class="headerlink" title="LIMIT子句"></a>LIMIT子句</h2><p><strong>小结</strong></p>
+<p>限制返回结果的记录数量，“前N个” 或 “跳过M个后的前N个”。<u><strong>LIMIT子句一定要放在最后</strong></u></p>
+<p><strong>例子</strong></p>
+<p>网页分页，page1: 1-3客户 page2: 4-6客户 page3: 7-9客户，取page3的客户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 跳过前六条记录，取后面三条</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> custmoers LIMIT <span class="number">6</span>, <span class="number">3</span></span><br><span class="line"><span class="comment">-- 6是偏移量</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>练习</strong></p>
+<p>Get the top three loyal customers </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> customers <span class="keyword">ORDER</span> <span class="keyword">BY</span> points <span class="keyword">DESC</span> LIMIT <span class="number">3</span>;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="TO-SUM-UP"><a href="#TO-SUM-UP" class="headerlink" title="TO SUM UP"></a>TO SUM UP</h2><p><strong>子句顺序</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span>`<span class="operator">+</span> `<span class="keyword">from</span>` <span class="operator">+</span> `<span class="keyword">where</span>` <span class="operator">+</span> `<span class="keyword">order</span> <span class="keyword">by</span>` <span class="operator">+</span> `limit</span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>行行好 大家行行好</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="Xingjie He 微信">
+        <span>微信</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/" rel="prev" title="SQL-基础02">
+                  <i class="fa fa-chevron-left"></i> SQL-基础02
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/" rel="next" title="SQL-进阶02">
+                  SQL-进阶02 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Xingjie He</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">3k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">12 分钟</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
