@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/</loc>
+    
+    <lastmod>2022-11-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/</loc>
     
     <lastmod>2022-11-21</lastmod>
@@ -21,15 +30,6 @@
   
   <url>
     <loc>http://yoursite.com/2022/11/01/sql%E8%AF%AD%E5%8F%A5/</loc>
-    
-    <lastmod>2022-11-21</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2022/11/09/SQL-%E5%9F%BA%E7%A1%8002/</loc>
     
     <lastmod>2022-11-21</lastmod>
     
