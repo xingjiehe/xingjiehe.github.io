@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/sql-join.png">
 <meta property="article:published_time" content="2022-11-16T06:26:05.000Z">
-<meta property="article:modified_time" content="2022-11-22T06:56:34.615Z">
+<meta property="article:modified_time" content="2022-11-23T02:32:20.137Z">
 <meta property="article:author" content="Xingjie He">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -119,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JOIN"><span class="nav-number">1.</span> <span class="nav-text">JOIN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INNER-JOIN-%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">INNER JOIN 内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5"><span class="nav-number">1.2.</span> <span class="nav-text">跨数据库链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%93%BE%E6%8E%A5-Self-Joins"><span class="nav-number">1.3.</span> <span class="nav-text">自链接 Self Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5-Joining-Multiple-Tables"><span class="nav-number">1.4.</span> <span class="nav-text">多表连接 Joining Multiple Tables</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JOIN"><span class="nav-number">1.</span> <span class="nav-text">JOIN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INNER-JOIN-%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">INNER JOIN 内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5"><span class="nav-number">1.2.</span> <span class="nav-text">跨数据库链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%93%BE%E6%8E%A5-Self-Joins"><span class="nav-number">1.3.</span> <span class="nav-text">自链接 Self Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5-Joining-Multiple-Tables"><span class="nav-number">1.4.</span> <span class="nav-text">多表连接 Joining Multiple Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E8%BF%9E%E6%8E%A5%E6%9D%A1%E4%BB%B6-Compound-Join-Conditions"><span class="nav-number">1.5.</span> <span class="nav-text">复合连接条件 Compound Join Conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%AF%AD%E6%B3%95-Implicit-Join-Syntax"><span class="nav-number">1.6.</span> <span class="nav-text">隐式连接语法 Implicit Join Syntax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%93%BE%E6%8E%A5-Outer-Joins"><span class="nav-number">1.7.</span> <span class="nav-text">外链接 Outer Joins</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-22 14:56:34" itemprop="dateModified" datetime="2022-11-22T14:56:34+08:00">2022-11-22</time>
+      <time title="修改时间：2022-11-23 10:32:20" itemprop="dateModified" datetime="2022-11-23T10:32:20+08:00">2022-11-23</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,14 +244,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>508</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -262,10 +262,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h1><span id="more"></span>
-
-<p><img src="/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/sql-join.png" alt="sql-join"> </p>
+        <h1 id="JOIN"><a href="#JOIN" class="headerlink" title="JOIN"></a>JOIN</h1><p><img src="/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/sql-join.png" alt="sql-join"> </p>
 <hr>
+<span id="more"></span>
+
 <h2 id="INNER-JOIN-内连接"><a href="#INNER-JOIN-内连接" class="headerlink" title="INNER JOIN 内连接"></a>INNER JOIN 内连接</h2><p><strong>小结</strong></p>
 <p>各表分开存放是为了减少重复信息和方便修改，需要时可以根据相互之间的关系连接成相应的合并详情表以满足相应的查询。FROM JOIN ON 语句就是告诉sql： 将哪几张表以什么基础连接&#x2F;合并起来。</p>
 <p><strong>关于表别名</strong></p>
@@ -288,7 +288,52 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">USE sql_hr;</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    e.employee_id,</span><br><span class="line">    e.first_name,</span><br><span class="line">    m.first_name <span class="keyword">AS</span> manager</span><br><span class="line"><span class="comment">-- 自合并必然每列都要加表前缀，因为每列都同时在两张表中出现。另外，两个 first_name 列有歧义，注意将最后一列改名为 manager 使得结果表更易于理解</span></span><br><span class="line"><span class="keyword">FROM</span> employees e</span><br><span class="line"><span class="keyword">JOIN</span> employees m</span><br><span class="line"><span class="keyword">ON</span> e.reports_to <span class="operator">=</span> m.employee_id;</span><br></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="多表连接-Joining-Multiple-Tables"><a href="#多表连接-Joining-Multiple-Tables" class="headerlink" title="多表连接 Joining Multiple Tables"></a>多表连接 Joining Multiple Tables</h2>
+<h2 id="多表连接-Joining-Multiple-Tables"><a href="#多表连接-Joining-Multiple-Tables" class="headerlink" title="多表连接 Joining Multiple Tables"></a>多表连接 Joining Multiple Tables</h2><p><code>FROM</code> 一个核心表A，用多个 <code>JOIN …… ON ……</code> 分别通过不同的链接关系链接不同的表B、C、D……，通常是让表B、C、D……为表A提供更详细的信息从而合并为一张详情合并版A表，即</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span>  A </span><br><span class="line">    <span class="keyword">JOIN</span> B <span class="keyword">ON</span> AB的关系 </span><br><span class="line">    <span class="keyword">JOIN</span> C <span class="keyword">ON</span> AC的关系 </span><br><span class="line">    <span class="keyword">JOIN</span> D <span class="keyword">ON</span> AD的关系 </span><br><span class="line"><span class="comment">-- 将得到一个合并了BCD……等表详细信息的详情合并版A表</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>案例1</strong></p>
+<p>orders表同时链接customers表和order_statuses状态表，合并为有顾客和状态信息的详细订单表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">		o.order_id,</span><br><span class="line">    o.order_date,</span><br><span class="line">    c.first_name,</span><br><span class="line">    c.last_name,</span><br><span class="line">    os.name <span class="keyword">as</span> states</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">join</span> customers c <span class="keyword">on</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br><span class="line"><span class="keyword">join</span> order_statuses os <span class="keyword">on</span> o.status <span class="operator">=</span> os.order_status_id;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习</strong></p>
+<p>将payments表与payment_method和clients表join起来，展示付款和更多详细信息，比如姓名和付款方式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">USE sql_invoicing;</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">	p.date,</span><br><span class="line">  p.invoice_id,</span><br><span class="line">  p.amount,</span><br><span class="line">  c.name,</span><br><span class="line">  m.name</span><br><span class="line"><span class="keyword">FROM</span> payments p</span><br><span class="line"><span class="keyword">join</span> payment_methods m <span class="keyword">on</span> p.payment_method <span class="operator">=</span> m.payment_method_id</span><br><span class="line"><span class="keyword">join</span> clients c <span class="keyword">on</span> p.client_id <span class="operator">=</span> c.client_id;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="复合连接条件-Compound-Join-Conditions"><a href="#复合连接条件-Compound-Join-Conditions" class="headerlink" title="复合连接条件 Compound Join Conditions"></a>复合连接条件 Compound Join Conditions</h2><p>像订单项目（order_items）这种表，<strong>订单id和产品id合在一起才能唯一表示一条记录</strong>，这叫<strong>复合主键</strong>，设计模式下也可以看到两个字段都有PK标识，订单项目备注表(order_item_notes)也是这两个复合主键，因此他们两合并时要用复合条件：</p>
+<p><code>FROM</code> 表1 <code>JOIN</code> 表2 <code>ON</code> 条件1 <code>【AND】</code> 条件2</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> order_items oi</span><br><span class="line"><span class="keyword">JOIN</span> order_item_notes oin</span><br><span class="line">    <span class="keyword">ON</span> oi.order_Id <span class="operator">=</span> oin.order_Id</span><br><span class="line">    <span class="keyword">AND</span> oi.product_id <span class="operator">=</span> oin.product_id</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="隐式连接语法-Implicit-Join-Syntax"><a href="#隐式连接语法-Implicit-Join-Syntax" class="headerlink" title="隐式连接语法 Implicit Join Syntax"></a>隐式连接语法 Implicit Join Syntax</h2><p><strong>小结</strong></p>
+<p>就是用FROM WHERE取代FROM JOIN ON</p>
+<p>⚠️尽量别用，因为若忘记WHERE条件筛选语句，不会报错但会得到交叉合并（cross join）</p>
+<p><strong>案例</strong></p>
+<p>合并顾客表和订单表，显性合并：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">JOIN</span> customers c</span><br><span class="line"><span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br></pre></td></tr></table></figure>
+
+<p>隐式合并语法：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> orders o, customers c  </span><br><span class="line"><span class="keyword">WHERE</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br></pre></td></tr></table></figure>
+
+<p>注意 FROM 子句里的逗号，就像 SELECT 多条列用逗号隔开一样，FROM 多个表也用逗号隔开，此时若忘记WHERE条件筛选语句则得到这几张表的交叉合并结果</p>
+<hr>
+<h2 id="外链接-Outer-Joins"><a href="#外链接-Outer-Joins" class="headerlink" title="外链接 Outer Joins"></a>外链接 Outer Joins</h2><p><strong>小结</strong></p>
+<ul>
+<li><code>(INNER) JOIN</code> 结果只包含两表的交集</li>
+<li><code>LEFT/RIGHT (OUTER) JOIN</code> 结果里除了交集，还包含只出现在左&#x2F;右表中的记录</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    c.customer_id,</span><br><span class="line">    c.first_name,</span><br><span class="line">    o.order_id</span><br><span class="line"><span class="keyword">FROM</span> customers c</span><br><span class="line"><span class="keyword">JOIN</span> orders o</span><br><span class="line">    <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> customer_id</span><br></pre></td></tr></table></figure>
+
+<p>这样是INNER JOIN，只展示有订单的顾客（及其订单），也就是两张表的交集。是那些同时有顾客信息和订单信息的记录。</p>
+<p>若要展示全部顾客（及其订单，如果有的话），要改用LEFT (OUTER) JOIN，结果相较于 INNER JOIN 多了没有订单的那些顾客，即只有顾客信息没有订单信息的记录。</p>
+<p>当然，也可以调换左右表的顺序（即调换FROM和JOIN的对象）再 RIGHT JOIN，即：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">LEFT</span> <span class="operator">/</span> <span class="keyword">RIGHT</span> [<span class="keyword">OUTER</span>] <span class="keyword">JOIN</span> customers c</span><br><span class="line"><span class="comment">-- 中括号 [] 表示是可选项、可省略 </span></span><br><span class="line"><span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 若要展示全部订单（及其顾客），就应该是 orders RIGHT JOIN customers，结果相较于 INNER JOIN 多了没有顾客的那些订单，即只有订单信息没有顾客信息的记录。（注：因为这里所有订单都有顾客，所以这里 RIGHT JOIN 结果和 INNER JOIN 一样）</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>不管条件对不对，如果是left join即左边的表记录全部返回。right join同理</strong></p>
+<p><strong>练习</strong></p>
+<p>展示product_id,name,quantity from order_items表，也要包括没有订单的产品</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- join order表和order_items表</span></span><br><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">		p.product_id, </span><br><span class="line">    p.name,</span><br><span class="line">    oi.quantity</span><br><span class="line"><span class="keyword">from</span> products p</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> order_items oi</span><br><span class="line"><span class="keyword">on</span> p.product_id <span class="operator">=</span> oi.product_id;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -357,13 +402,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">5k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
