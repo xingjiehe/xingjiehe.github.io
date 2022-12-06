@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2022/11/16/SQL-%E8%BF%9B%E9%98%B602/sql-join.png">
 <meta property="article:published_time" content="2022-11-16T06:26:05.000Z">
-<meta property="article:modified_time" content="2022-11-23T02:32:20.137Z">
+<meta property="article:modified_time" content="2022-12-06T08:56:34.400Z">
 <meta property="article:author" content="Xingjie He">
 <meta property="article:tag" content="数据库">
 <meta name="twitter:card" content="summary">
@@ -119,7 +119,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JOIN"><span class="nav-number">1.</span> <span class="nav-text">JOIN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INNER-JOIN-%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">INNER JOIN 内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5"><span class="nav-number">1.2.</span> <span class="nav-text">跨数据库链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%93%BE%E6%8E%A5-Self-Joins"><span class="nav-number">1.3.</span> <span class="nav-text">自链接 Self Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5-Joining-Multiple-Tables"><span class="nav-number">1.4.</span> <span class="nav-text">多表连接 Joining Multiple Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E8%BF%9E%E6%8E%A5%E6%9D%A1%E4%BB%B6-Compound-Join-Conditions"><span class="nav-number">1.5.</span> <span class="nav-text">复合连接条件 Compound Join Conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%AF%AD%E6%B3%95-Implicit-Join-Syntax"><span class="nav-number">1.6.</span> <span class="nav-text">隐式连接语法 Implicit Join Syntax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%93%BE%E6%8E%A5-Outer-Joins"><span class="nav-number">1.7.</span> <span class="nav-text">外链接 Outer Joins</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JOIN"><span class="nav-number">1.</span> <span class="nav-text">JOIN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#INNER-JOIN-%E5%86%85%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.1.</span> <span class="nav-text">INNER JOIN 内连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E9%93%BE%E6%8E%A5"><span class="nav-number">1.2.</span> <span class="nav-text">跨数据库链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E9%93%BE%E6%8E%A5-Self-Joins"><span class="nav-number">1.3.</span> <span class="nav-text">自链接 Self Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E8%BF%9E%E6%8E%A5-Joining-Multiple-Tables"><span class="nav-number">1.4.</span> <span class="nav-text">多表连接 Joining Multiple Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E8%BF%9E%E6%8E%A5%E6%9D%A1%E4%BB%B6-Compound-Join-Conditions"><span class="nav-number">1.5.</span> <span class="nav-text">复合连接条件 Compound Join Conditions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E8%BF%9E%E6%8E%A5%E8%AF%AD%E6%B3%95-Implicit-Join-Syntax"><span class="nav-number">1.6.</span> <span class="nav-text">隐式连接语法 Implicit Join Syntax</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%93%BE%E6%8E%A5-Outer-Joins"><span class="nav-number">1.7.</span> <span class="nav-text">外链接 Outer Joins</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E8%A1%A8%E5%A4%96%E8%BF%9E%E6%8E%A5-Outer-Join-Between-Multiple-Tables"><span class="nav-number">1.8.</span> <span class="nav-text">多表外连接 Outer Join Between Multiple Tables</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%A4%96%E9%93%BE%E6%8E%A5-Self-Outer-Join"><span class="nav-number">1.9.</span> <span class="nav-text">自外链接 Self Outer Join</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USING%E5%AD%90%E5%8F%A5"><span class="nav-number">1.10.</span> <span class="nav-text">USING子句</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +225,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-11-23 10:32:20" itemprop="dateModified" datetime="2022-11-23T10:32:20+08:00">2022-11-23</time>
+      <time title="修改时间：2022-12-06 16:56:34" itemprop="dateModified" datetime="2022-12-06T16:56:34+08:00">2022-12-06</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -244,14 +244,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.4k</span>
+      <span>1.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>5 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -334,6 +334,25 @@
 <p>展示product_id,name,quantity from order_items表，也要包括没有订单的产品</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- join order表和order_items表</span></span><br><span class="line">USE sql_store;</span><br><span class="line"><span class="keyword">select</span> </span><br><span class="line">		p.product_id, </span><br><span class="line">    p.name,</span><br><span class="line">    oi.quantity</span><br><span class="line"><span class="keyword">from</span> products p</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> order_items oi</span><br><span class="line"><span class="keyword">on</span> p.product_id <span class="operator">=</span> oi.product_id;</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="多表外连接-Outer-Join-Between-Multiple-Tables"><a href="#多表外连接-Outer-Join-Between-Multiple-Tables" class="headerlink" title="多表外连接 Outer Join Between Multiple Tables"></a>多表外连接 Outer Join Between Multiple Tables</h2><p><strong>小结</strong></p>
+<p>与内连接类似，我们可以对多个表（3个及以上）进行外连接，最好只用 JOIN 和 LEFT JOIN</p>
+<p><strong>案例</strong></p>
+<p>查询顾客、订单和发货商记录，要包括所有顾客（包括无订单的顾客），也要包括所有订单（包括未发出的）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">	c.customer_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	o.order_id,</span><br><span class="line">	s.shipper_id</span><br><span class="line"><span class="keyword">FROM</span> customers c</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> orders o <span class="keyword">ON</span> c.customer_id <span class="operator">=</span> o.customer_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> shippers s <span class="keyword">ON</span> o.shipper_id <span class="operator">=</span> s.shipper_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> customer_id;</span><br></pre></td></tr></table></figure>
+
+<p><strong>练习</strong></p>
+<p>输出order_date, order_id, first_name,shipper,statues</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">	o.order_date,</span><br><span class="line">	o.order_id,</span><br><span class="line">	c.first_name,</span><br><span class="line">	s.name <span class="keyword">AS</span> shippers,</span><br><span class="line">	os.name</span><br><span class="line"><span class="keyword">FROM</span> orders o</span><br><span class="line"><span class="keyword">JOIN</span> customers c <span class="keyword">ON</span> o.customer_id <span class="operator">=</span> c.customer_id</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> shippers s <span class="keyword">ON</span> o.shipper_id <span class="operator">=</span> s.shipper_id</span><br><span class="line"><span class="keyword">JOIN</span> order_statuses os <span class="keyword">ON</span> o.status <span class="operator">=</span> os.order_status_id</span><br></pre></td></tr></table></figure>
+
+<p>订单必有顾客和状态，所以这第1个和第3个 JOIN 加不加 LEFT 效果一样 但订单不一定发货了，即不一定有发货商，所以第2个 JOIN 必须是 LEFT JOIN，否者会筛掉没发货的订单</p>
+<hr>
+<h2 id="自外链接-Self-Outer-Join"><a href="#自外链接-Self-Outer-Join" class="headerlink" title="自外链接 Self Outer Join"></a>自外链接 Self Outer Join</h2><p><strong>小结</strong></p>
+<p>前面员工表的例子，用LEFT JOIN会得到员工和他的上级的合并表但是现在也得包含老板本人（本人没有reports to的人）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">e.employee_id, </span><br><span class="line">e.first_name,</span><br><span class="line">m.first_name</span><br><span class="line"><span class="keyword">FROM</span> employees e </span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> employees m </span><br><span class="line"><span class="keyword">ON</span> e.reports_to <span class="operator">=</span> m.employee_id</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="USING子句"><a href="#USING子句" class="headerlink" title="USING子句"></a>USING子句</h2>
     </div>
 
     
@@ -408,7 +427,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">17 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
